@@ -1,0 +1,26 @@
+quoted_status_id
+text
+hashtags
+id
+id_str
+favorite_count
+retweet_count
+user_mentions
+lang
+user
+	**is an object user**
+	created_at
+	description
+	followers_count
+	friends_count
+	id
+	id_str
+	lang
+	location
+	name
+	profile_image_url
+	screen_name
+	verified
+
+s = json.dumps(biden[0], default=lambda o:o.__dict__, sort_keys=True, indent=4)
+
