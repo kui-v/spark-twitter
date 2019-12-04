@@ -38,7 +38,7 @@ $( document ).ready(function() {
 function submitForm() {
     // Construct the URL
 
-    var u = 'localhost:8000/result?topicName=' + t +
+    var u = 'localhost:8000/result/topicName=' + t +
             '&questionIndex=' + id +
             '&src=tw';
     $.ajax({
