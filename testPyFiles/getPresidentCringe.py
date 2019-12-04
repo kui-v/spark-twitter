@@ -19,14 +19,15 @@ cringecol = twitdb['cringe']
 presidentsDict = {'Bennet':[], 'Biden':[], 'Bloomberg':[], 'Booker':[], 'Bullock':[], 'Buttgieg':[], 'Castro':[], 'Delaney':[], 'Gabbard':[], 'Harris':[], 'Klobuchar':[], 'Patrick':[], 'Sanders':[], 'Sestak':[], 'Steyer':[], 'Warren':[], 'Williamson':[], 'Yang':[], 'Trump':[], 'Walsh':[], 'Weld':[]}
 
 for name in presidentsDict:
-    presidentsDict[name] = api.GetSearch(term=name+'&cringe')
+    presidentsDict[name] = api.GetSearch(term=name+'&cringe', count=50)
 
 for president in presidentsDict:
     for tweet in presidentsDict[president]:
         tweet_data = {
-            '_id': tweet.id,
-            'id':tweet.id,
+            '_id': tweet.id_str,
+            'id':tweet.id_str,
             'president':president,
+            'created':tweet.created_at,
             'quoted_status_id':tweet.quoted_status_id,
             'text':tweet.text,
             'favorite_count':tweet.favorite_count,
@@ -37,10 +38,12 @@ for president in presidentsDict:
             'user_screen_name':tweet.user.screen_name,
             'user_verified':tweet.user.verified
         }
-        cringecol.update_one({'_id': tweet_data['_id']}, {"$set": tweet_data}, upsert=True)
+        if (str(type(tweet.retweeted_status)) == "<class 'NoneType'>"):
+            cringecol.update_one({'_id': tweet_data['_id']}, {"$set": tweet_data}, upsert=True)
 
 
 '''
 biden = presidentsDict['Biden']
 biden[0].__dict__.keys() # gets the keys in twitter.models.Status object
+quoted_status is the status that is quote tweeted
 '''
