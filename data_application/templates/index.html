@@ -1,0 +1,44 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script src="../static/script.js"></script>
+    <title>Big Data Application</title>
+</head>
+<body>
+
+    <form action="javascript:submitForm();">
+    <table>
+        <tr>
+            <td>Topic</td>
+            <td>Question</td>
+            <td>Data Source</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="topics" required>
+                    <option value="none" selected disabled hidden>--</option> 
+                    <option value="politics">Politics</option>
+                    <option value="soccer">Soccer</option>
+                    <option value="brands">Brands</option>
+                </select>
+            </td>
+            <td>
+                <select id="questions" required>
+                    <option value="none" selected disabled hidden>--</option> 
+                </select>
+            </td>
+            <td>
+                <input type="checkbox" name="all" value="All">All<br>
+                <input type="checkbox" name="twitter" value="twitter">Twitter<br>
+                <input type="checkbox" name="fb" value="facebook">Facebook
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit">
+    </form> 
+</body>
+</html>
