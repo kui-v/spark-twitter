@@ -22,6 +22,7 @@ from data_application import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
-    url(r'^result\?topicName\=([a-zA-Z]+)\&questionIndex\=[1-9]+\&src\=[a-zA-Z]+$', views.submit, name='submit'),
+    #url(r'^result\?topicName\=([a-zA-Z]+)\&questionIndex\=[1-9]+\&src\=[a-zA-Z]+$', views.submit, name='submit'),
+    url(r'^result/topicName\=([a-zA-Z]+)\&questionIndex\=([1-9]+)\&src\=([a-zA-Z]+)$', views.submit, name='submit'),
     url(r'^test/$', views.test, name='test'),
 ]
