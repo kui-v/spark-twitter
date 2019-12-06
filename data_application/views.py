@@ -9,6 +9,7 @@ def home(request):
     return render(request, 'index.html')
 
 def submit(request, topic, question, source):
+    
     return HttpResponse('<p>Topic: {}, Question: {}, Data Source: {}</p>'.format(topic, question, source))
 def test(request):
     return HttpResponse('<p>Test Sidd!!!: </p>')

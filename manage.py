@@ -3,9 +3,21 @@
 import os
 import sys
 import django
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from snippets.models import Snippet
+from snippets.serializers import SnippetSerializer
 
+os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'
 
-def main():
+@api_view(['GET', 'POST'])
+def main(request):
+    if request.method == 'GET':
+       print("HTTP GET")
+    elif request.method == 'POST':
+        print("HTTP POST")
+        
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'data_analytics_app.settings')
     try:
         from django.core.management import execute_from_command_line
