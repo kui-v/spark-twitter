@@ -1,0 +1,12 @@
+_id			id
+id			id
+created			date tweet created
+quoted_status_id	tweet ID for quote tweet (if applicable)
+text			text body of the tweet 
+favorite_count		number of likes
+retweet_count		number of retweets
+lang			language of tweet
+user_id			ID of user of tweeter
+user_name		user name (usually real name) of user
+user_screen_name	twitter handle of user
+user_verified		boolean if twitter user is verified
