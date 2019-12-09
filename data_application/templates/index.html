@@ -10,35 +10,36 @@
 </head>
 <body>
 
-    <form action="javascript:submitForm();">
-    <table>
-        <tr>
-            <td>Topic</td>
-            <td>Question</td>
-            <td>Data Source</td>
-        </tr>
-        <tr>
-            <td>
-                <select id="topics" required>
-                    <option value="none" selected disabled hidden>--</option> 
-                    <option value="politics">Politics</option>
-                    <option value="soccer">Soccer</option>
-                    <option value="brands">Brands</option>
-                </select>
-            </td>
-            <td>
-                <select id="questions" required>
-                    <option value="none" selected disabled hidden>--</option> 
-                </select>
-            </td>
-            <td>
-                <input type="checkbox" name="all" value="All">All<br>
-                <input type="checkbox" name="twitter" value="twitter">Twitter<br>
-                <input type="checkbox" name="fb" value="facebook">Facebook
-            </td>
-        </tr>
-    </table>
-    <input type="submit" value="Submit">
+    <form action="{% url 'submit' %}" method="post">
+        {% csrf_token %} 
+        <table>
+            <tr>
+                <td>Topic</td>
+                <td>Question</td>
+                <td>Data Source</td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="topics" name='topics' required>
+                        <option value="none" selected disabled hidden>--</option> 
+                        <option value="politics">Politics</option>
+                        <option value="soccer">Soccer</option>
+                        <option value="brands">Brands</option>
+                    </select>
+                </td>
+                <td>
+                    <select id="questions" name='questions' required>
+                        <option value="none" selected disabled hidden>--</option> 
+                    </select>
+                </td>
+                <td>
+                    <input type="checkbox" name="all" value="All">All<br>
+                    <input type="checkbox" name="twitter" value="twitter">Twitter<br>
+                    <input type="checkbox" name="fb" value="facebook">Facebook
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="Submit">
     </form> 
 </body>
 </html>

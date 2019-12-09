@@ -37,17 +37,18 @@ $( document ).ready(function() {
 
 function submitForm() {
     // Construct the URL
-
-    var u = 'localhost:8000/result/topicName=' + t +
+    var v = 'http://localhost:8000/result/topicName=' + t +
             '&questionIndex=' + id +
             '&src=tw';
+    var u = 'http://localhost:8000/result/topicName=' + t + '&questionIndex=' + id + '&src=tw'
     $.ajax({
         url: u,
-        type: "POST", //send it through get method
+        type: "GET", //send it through get method
         data: { 
             topic: t, 
             id: id},
         success: function(response) {
+            console.log(response)
             //Do Something
         },
         error: function(xhr) {
