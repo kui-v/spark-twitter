@@ -31,7 +31,7 @@ for president in presidentsDict:
             'president':president,
             'created':tweet.created_at,
             'quoted_status_id':tweet.quoted_status_id,
-            'text':tweet.text,
+            'text':tweet.full_text,
             'favorite_count':tweet.favorite_count,
             'retweet_count':tweet.retweet_count,
             'lang':tweet.lang,
