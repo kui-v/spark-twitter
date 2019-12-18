@@ -25,7 +25,7 @@ SECRET_KEY = '#4pu2y$c@r!9*%vmngrq6nkk+202at)7cu*56aiv(e0xtid+!j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '144.202.89.200', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost','0.0.0.0', '144.202.89.200', '127.0.0.1']
 
 
 # Application definition
@@ -39,13 +39,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'data_application',
     'corsheaders',
+    'django_extensions',
 ]
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
+# CORS Config
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = False
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -56,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'data_analytics_app.urls'
