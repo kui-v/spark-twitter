@@ -9,7 +9,9 @@
     <title>Big Data Application</title>
 </head>
 <body>
-
+    <script>
+        var myqs = "{{questions}}";  
+    </script>
     <form action="{% url 'submit' %}" method="post">
         {% csrf_token %} 
         <table>
@@ -21,10 +23,10 @@
             <tr>
                 <td>
                     <select id="topics" name='topics' required>
-                        <option value="none" selected disabled hidden>--</option> 
-                        <option value="politics">Politics</option>
-                        <option value="soccer">Soccer</option>
-                        <option value="brands">Brands</option>
+                        <option value="none" selected disabled hidden>--</option>
+                        {% for topic in topics %}
+                        <option value={{topic.name|lower}}>{{topic.name}}</option>
+                        {% endfor %}
                     </select>
                 </td>
                 <td>

@@ -25,7 +25,7 @@ SECRET_KEY = '#4pu2y$c@r!9*%vmngrq6nkk+202at)7cu*56aiv(e0xtid+!j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','0.0.0.0', '144.202.89.200', '127.0.0.1']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'data_application',
     'corsheaders',
+    'django_extensions',
 ]
 
 STATICFILES_DIRS = [
