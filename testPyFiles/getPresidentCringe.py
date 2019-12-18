@@ -5,7 +5,9 @@ from pymongo import MongoClient
 api = twitter.Api(consumer_key="M8bGm8c5fIMENbsbMKcxtKAce",
                   consumer_secret="r0iJ6Eff9UARPAZQt0BNJGAg0T6w6vM9K6leL9AErwj2v831yL",
                   access_token_key="4916681190-50Ptag1hiDJrgfC0tUtyivmsbqK4LP2XyWKegAu",
-                  access_token_secret="Eq9WzWfEDx4UAXVPy994gZcFSN5IaerqIhmpGKMeHSgzy")
+                  access_token_secret="Eq9WzWfEDx4UAXVPy994gZcFSN5IaerqIhmpGKMeHSgzy",
+                  cache=None,
+                  tweet_mode='extended')
 
 client = MongoClient('mongodb://127.0.0.1:27017',
         username='bdb',
@@ -29,7 +31,7 @@ for president in presidentsDict:
             'president':president,
             'created':tweet.created_at,
             'quoted_status_id':tweet.quoted_status_id,
-            'text':tweet.text,
+            'text':tweet.full_text,
             'favorite_count':tweet.favorite_count,
             'retweet_count':tweet.retweet_count,
             'lang':tweet.lang,
