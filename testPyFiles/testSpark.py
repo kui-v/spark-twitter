@@ -18,11 +18,15 @@ spark = SparkSession\
         .appName("PythonWordCount")\
         .getOrCreate()
 
-tweetsCur = prescol.find({}, {"president":1, "text":1})
-presidentsList = list(prescol.find({}, {"president"}).distinct("president"))
+presCur = prescol.aggregate([{"$group": {'_id':"$president", 'count':{"$sum":1}}}])
 
-# for each president in presidentsList
-# get wordcount for all text tweets
+
+
+'''
+tweetsCur = cringecol.find({}, {"president":1, "text":1})
+presidentsList = list(cringecol.find({}, {"president"}).distinct("president"))
+'''
+# for each president, get count of all their tweet records in cringe colle
 
     '''
     lines = spark.read.text(sys.argv[1]).rdd.map(lambda r: r[0])
@@ -34,4 +38,4 @@ presidentsList = list(prescol.find({}, {"president"}).distinct("president"))
     for (word, count) in output:
         print("%s: %i" % (word, count))
     '''
-    spark.stop()
+spark.stop()
