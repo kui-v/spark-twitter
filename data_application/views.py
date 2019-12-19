@@ -9,15 +9,18 @@ from django.core import serializers
 # Create your views here.
 
 def home(request):
+    #pass
     topics = Topic.objects.all()
-    #questions = serializers.serialize("json", Question.objects.select_related('topic_id'))
-    #["Who is the cringiest politician?", "Who is currently the most trended American polician"]
-    questions = serializers.serialize('json', Question.objects.select_related('topic_id'))
-    #questions = json.dumps(questions)
+    #questions = serializers.serialize("json", Question.objects.select_related('topic_id'))    #<>
+    #print(type(topics),type(questions))
+    d = {"politics":["Who is the cringiest politician?", "Who is currently the most trended American polician"]}
+    #questions = serializers.serialize('json', Question.objects.select_related('topic_id'))
+    questions = json.dumps(d)#.encode(encoding='UTF-8',errors='strict')
+    #print(json.loads())
     #questions = json.loads(questions)
     #questions = serializers.serialize('json', questions)
-    print(type(questions))
-    print(questions)
+    #print(type(questions))
+    #print(questions)
     
     return render(request, 'index.html', {'topics':topics, 'questions':questions})
 '''

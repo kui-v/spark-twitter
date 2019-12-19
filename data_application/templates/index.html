@@ -10,7 +10,8 @@
 </head>
 <body>
     <script>
-        var myqs = "{{questions}}";  
+        var questions = "{{questions}}";
+        questions = JSON.parse(questions.replace(/(&quot\;)/g,"\""));
     </script>
     <form action="{% url 'submit' %}" method="post">
         {% csrf_token %} 
