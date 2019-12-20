@@ -5,6 +5,7 @@ from django.http import HttpResponse
 import json
 from data_application.models import Topic, Question
 from django.core import serializers
+from .pyScripts.getTrendyPres import getTrendyPres
 
 # Create your views here.
 
@@ -32,8 +33,9 @@ def submit(request):
     topic = request.POST.get('topics')
     question = request.POST.get('questions')
     #source = request.POST.get('sources')
-
-    return HttpResponse('<p>Topic: {}, Question: {}, Data Source: tw</p>'.format(topic, question))
+    presName = getTrendyPres()
+    #return HttpResponse('<p>Topic: {}, Question: {}, Data Source: tw</p>'.format(topic, question))
+    return HttpResponse('<p>Trendiest president: {}</p>'.format(presName))
 
 def test(request,topic,question):
     print(topic,type(question))
