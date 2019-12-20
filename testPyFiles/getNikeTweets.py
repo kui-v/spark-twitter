@@ -33,6 +33,7 @@ for tweet in nikeTweets:
         'user_id':tweet.user.id,
         'user_name':tweet.user.name,
         'user_screen_name':tweet.user.screen_name,
+        'user_location':tweet.user.location,
         'user_verified':tweet.user.verified
     }
     if (str(type(tweet.retweeted_status)) == "<class 'NoneType'>"):

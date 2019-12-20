@@ -16,11 +16,13 @@ client = MongoClient('mongodb://127.0.0.1:27017',
 
 db = client.admin
 twitdb = client['twitdb']
-adidascol = twitdb['adidas']
+impeachcol = twitdb['impeach']
 
-adidasTweets = api.GetSearch(term='Adidas', count=50)
+impeachTweets = api.GetSearch(term='impeach', count=50)
 
-for tweet in adidasTweets:
+# location = impeachTweets[0]._json['user']['location']
+
+for tweet in impeachTweets:
     tweet_data = {
         '_id': tweet.id_str,
         'id':tweet.id_str,
@@ -33,11 +35,11 @@ for tweet in adidasTweets:
         'user_id':tweet.user.id,
         'user_name':tweet.user.name,
         'user_screen_name':tweet.user.screen_name,
-        'user_location':tweet.user.location,
-        'user_verified':tweet.user.verified
+        'user_verified':tweet.user.verified,
+        'user_location':tweet.user.location
     }
     if (str(type(tweet.retweeted_status)) == "<class 'NoneType'>"):
-        adidascol.update_one({'_id': tweet_data['_id']}, {"$set": tweet_data}, upsert=True)
+        impeachcol.update_one({'_id': tweet_data['_id']}, {"$set": tweet_data}, upsert=True)
 
 
 '''
